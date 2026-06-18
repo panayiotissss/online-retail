@@ -2,5 +2,4 @@ clustering_theory.md
 .venv
 __pycache__
 venv/
-models/
 data/

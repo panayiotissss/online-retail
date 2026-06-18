@@ -1,0 +1,15 @@
+1. Initialize run and metrics
+
+mlflow.set_experiment("projectname")  # groups all runs together
+with mlflow.start_run(run_name='whatever i name the run'): # start tracking
+mlflow.log_param(s)("parameter_name",value if str use "") -> use parmas if passing a dict
+mlflow.log_metric(s)("metic_name" , var) -> use parmas if passing a dict
+
+ mlflow.log_artifact('path/to/file')
+ mlflow.sklearn.log_model(modelvar , "model")
+
+
+  mlflow.sklearn.load_model("runs:/<run_id>/model")
+
+2. Then in the terminal run:
+mlflow ui

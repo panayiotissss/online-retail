@@ -1,6 +1,14 @@
 import pandas as pd
 import numpy as np
 
+SKEWED_COLS = ['Monetary', 'Frequency', 'TotalItems', 'UniqueProducts', 'AvgOrderValue', 'AvgQuantityPerOrder']
+
+def log_transform(df):
+    df = df.copy()
+    for col in SKEWED_COLS:
+        df[col] = np.log1p(df[col])
+    return df
+
 def build_features(path:str):
 #Load data from the path above
     df = pd.read_csv(path)
@@ -37,11 +45,7 @@ def build_features(path:str):
     rfm = rfm.drop(columns=['LastPurchaseDate', 'FirstPurchaseDate'])
 
 
-    skewed_cols = ['Monetary', 'Frequency', 'TotalItems', 'UniqueProducts',
-                'AvgOrderValue', 'AvgQuantityPerOrder']
-
-    for col in skewed_cols:
-        rfm[col] = np.log1p(rfm[col])
+    rfm = log_transform(rfm)
 
 
 

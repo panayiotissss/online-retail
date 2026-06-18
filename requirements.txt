@@ -2,6 +2,8 @@ numpy
 pandas
 scikit-learn
 umap-learn
-matplotlib.pyplot
+matplotlib
 hdbscan
-claude --resume e69e444e-6827-4a21-b2a6-c37b34e8e052
+mlflow
+fastapi
+pydantic
