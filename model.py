@@ -113,6 +113,12 @@ with mlflow.start_run(run_name='KMeans-final-k4'):
     mlflow.log_metrics({"silhouette": sil_score, "davies_bouldin": db_score, "ARI": ARI})
     mlflow.log_artifact('plots/umap_2d_kmeans.png')
 
+
+    #For plotting app.py
+    umap_df = pd.DataFrame(X_2d, columns=['x', 'y'])
+    umap_df['cluster'] = labels_run1
+    umap_df.to_csv('data/umap_2d.csv', index=False)
+
     joblib.dump(km, 'models/kmeans.pkl')
     mlflow.sklearn.log_model(km, "model")
 
